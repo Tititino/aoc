@@ -10,6 +10,8 @@ import java.util.Iterator;
 
 public class Test {
 	
+	// OVERVIEW: this sucks ass, this is actual dogshit, i won't even bother to clean this up
+	
 	public static void main(String[] args) {
         	if (args.length == 0) throw new RuntimeException("No file provided");
 		int[] acc = new int[25];
