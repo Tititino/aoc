@@ -25,7 +25,7 @@ public class Test {
                 String[] split = str.split(",");
                 int[] res = new int[split.length];
                 for (int i = 0; i < split.length; i++)
-		res[i] = Integer.valueOf(split[i]);           
+			res[i] = Integer.valueOf(split[i]);           
 
                 return res;
         }
