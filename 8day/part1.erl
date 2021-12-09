@@ -18,7 +18,7 @@ words(STR) ->
 	[X]      -> [string:trim(X) | []];
 	[X | XS] -> [ X | words(XS)]
     end.
-%% ---------------------------
+%% --------------------------- %%
 
 nToLen(N) ->
     case N of
@@ -74,6 +74,6 @@ final(FileName) ->
     T = file:open(FileName, [read]),
     case T of
         {ok, Device} -> io:format("~p~n", [countTotal(trimStrings(read(Device)))]),
-						file:close(Device);
+			file:close(Device);
         _            -> erlang:error(fileException)
     end.
