@@ -119,7 +119,7 @@ public class Heightmap {
 	  * 	@param x the $x$ coordinates of the point
 	  * 	@param y the $y$ coordinates of the point
 	  * 	@param mat is a matrix used to keep track of the visited points
-	  *         @return the size of the basin as defined in the descripion of <code> get_basin_size </code>
+	  * 	@return the size of the basin as defined in the descripion of <code> get_basin_size </code>
 	  */            
 	private int _get_basin_size(int x, int y, int mat[][]) {
 		if (get(x, y) == 9) return 0;
