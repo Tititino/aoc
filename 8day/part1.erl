@@ -58,10 +58,10 @@ countCon(XS, N, PID) ->
 countTotal(NUMS) -> K = fun(VAL, N) ->
                                 spawn(part1, countCon, [VAL, N, self()]),
                                 receive 
-									K -> K
-		        				end
-						end,
-	        			K(NUMS, 1) + K(NUMS, 4) + K(NUMS, 7) + K(NUMS, 8).
+					K -> K
+		        	end
+			end,
+	        	K(NUMS, 1) + K(NUMS, 4) + K(NUMS, 7) + K(NUMS, 8).
 
 read(File) ->
     case file:read_line(File) of
