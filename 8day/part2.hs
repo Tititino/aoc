@@ -1,5 +1,5 @@
 -- this is code is kinda shit, i wanted to do it in Erlang but
--- i lot too many hours on it and i finally decided to go back
+-- i lost too many hours on it and i finally decided to go back
 -- to good 'ol haskell to kinda brute force it
 -- might still go back and try to finish this in Erlang with
 -- some concurrency
