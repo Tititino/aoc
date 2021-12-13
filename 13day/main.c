@@ -80,11 +80,9 @@ void populate(FILE* f, Instr in[], int*** mat, int* maxx, int* maxy) {
 		points[i++] = p;
 	}
 	points[i] = 0;
-	
-	a++;
-	b++;
-	*maxx = a;
-	*maxy = b;
+            
+	*maxx = ++a;
+	*maxy = ++b;
 	*mat = (int**) calloc(b, sizeof(int*));
 	for (i = 0; i < b; i++)
 		(*mat)[i] = (int*) calloc(a, sizeof(int));
@@ -94,8 +92,8 @@ void populate(FILE* f, Instr in[], int*** mat, int* maxx, int* maxy) {
 		free(p);
 	}
 
-	while (fscanf(f, "%s", str) != EOF) {
-		for (i = 0; c = str[i]; i++) {
+	while (fscanf(f, "%s", str) != EOF) 
+		for (i = 0; c = str[i]; i++) 
 			switch (c) {
 				case 'x':
 					new_instr = (Instr) malloc(sizeof(struct instr));
@@ -110,8 +108,6 @@ void populate(FILE* f, Instr in[], int*** mat, int* maxx, int* maxy) {
 					in[ins++] = new_instr;
 					break;
 			}
-		}
-	}
 	in[ins] = 0;
 }
 
