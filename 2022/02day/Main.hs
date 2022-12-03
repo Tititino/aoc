@@ -1,5 +1,6 @@
 import System.Environment (getArgs)
 
+-- type and type classes definitions
 data Move = Rock | Paper | Scissor deriving Eq
 
 instance Read Move where
@@ -13,7 +14,6 @@ instance Show Move where
         show Rock = "Rock"
         show Paper = "Paper"
         show Scissor = "Scissor"
-
 
 instance Ord Move where
         compare Rock Paper = LT
