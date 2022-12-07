@@ -1,3 +1,5 @@
+module Main where 
+
 import Control.Monad
 import System.Environment (getArgs)
 import Data.List (sort, groupBy)

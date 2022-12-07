@@ -1,3 +1,4 @@
+module Main where 
 import System.Environment (getArgs)
 
 -- type and type classes definitions
