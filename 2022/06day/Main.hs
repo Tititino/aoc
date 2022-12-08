@@ -1,25 +1,29 @@
 import Data.List
 import System.Environment
-import qualified Data.Text as Text
 import Control.Monad
 import Control.Monad.State
+import Data.Maybe (fromJust)
 
-type Count = State ([Char], [Char]) Integer
-
-findMarker :: Int -> Count
+findMarker :: Int -> State ([Char], [Char]) Integer 
 findMarker n = do
         (seen, toSee) <- get
         if null toSee then
-                return $ length seen
-        else
-                let el   = head toSee in
-                let rest = tail toSee in
-                modify (if el `elem` seen then ([el], rest) else (el:seen, rest))
+                return $ (toInteger . length $ seen)
+        else let (el, rest)   = fromJust . uncons $ toSee in
+             if (length seen < (n - 1)) || (el `elem` (take (n - 1) seen)) then do
+                put (el:seen, rest)
+                findMarker n
+             else 
+                return $ (toInteger $ length (el:seen))
 
 main :: IO ()
 main = do
         return ()
         fileLine <- getArgs >>= readFile . head >>= return . head . lines 
-        putStrLn . show . findMarker fileLine $ 4
-        putStrLn . show . findMarker fileLine $ 14
+        forM_ [4, 14] (\x -> putStrLn . show $ evalState (findMarker x) ([], fileLine))
 
+test1 n = evalState (findMarker n) ([], "mjqjpqmgbljsphdztnvjfqwrcgsmlb")
+test2 n = evalState (findMarker n) ([], "bvwbjplbgvbhsrlpgdmjqwftvncz")
+test3 n = evalState (findMarker n) ([], "nppdvjthqldpwncqszvftbrmjlhg")
+test4 n = evalState (findMarker n) ([], "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg")
+test5 n = evalState (findMarker n) ([], "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw")

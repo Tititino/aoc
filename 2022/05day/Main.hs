@@ -9,6 +9,7 @@ import Data.Char (isDigit)
 import qualified Data.Map as Map
 import qualified Data.Text as Text
 import Text.Read
+import Data.DList
 -- import Text.RE.TDFA.String
 
 newtype Crate = Crate Char deriving (Eq, Ord)
