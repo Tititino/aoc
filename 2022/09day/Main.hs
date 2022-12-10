@@ -3,13 +3,11 @@ module Main where
 import System.Environment ( getArgs )
 import qualified Control.Monad.State.Lazy as State
 import Control.Monad
-import qualified Data.Map as Map
+import qualified Data.Set as Set
 
 data Direction = U | D | R | L
-
 type Rope = [(Int, Int)]
-
-type Visits = Map.Map (Int, Int) Bool
+type Visits = Set.Set (Int, Int)
 
 updateHd :: Direction -> (Int, Int) -> (Int, Int)
 updateHd U (x, y) = (x, y + 1)
@@ -38,13 +36,13 @@ mapMove hd (tl:rest) =
 move :: [Direction] -> State.State (Rope, Visits) Integer
 move [] = do
         (_, vs) <- State.get
-        return $ toInteger . Map.size $ vs
+        return $ toInteger . Set.size $ vs
 move (dir:rest) = do
         (rope, vs) <- State.get
         let hd = updateHd dir (head rope)
         let tl = tail rope
         let newrope = mapMove hd tl
-        State.put (hd:newrope, Map.insert (last newrope) True vs)
+        State.put (hd:newrope, Set.insert (last newrope) vs)
         move rest
 
 digestLines :: [[String]] -> [Direction]
@@ -58,5 +56,5 @@ main :: IO ()
 main = do
         fileLines <- getArgs >>= (readFile . head) >>= return . map words . lines
         let directions = digestLines fileLines
-        forM_ [3, 10] (\x -> putStrLn . show $ State.evalState (move directions) (replicate x (0, 0), Map.empty))
+        forM_ [3, 10] (\x -> putStrLn . show $ State.evalState (move directions) (replicate x (0, 0), Set.empty))
 
