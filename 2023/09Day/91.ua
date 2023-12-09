@@ -1,20 +1,21 @@
 # Experimental!
 AllZero ← /↧=0
 
-Next ← (
+Next!!!! ← (
   .
-  ↬((0;|+⊃(⊢⇌||1 ↫)≡(/-)◫ 2)¬AllZero.)
-  +⊢⇌:
+  ↬((0;|^2⊃(^1||1 ↫)≡(/-)◫ 2)¬AllZero.)
+  ^2^1:
 )
 
 $ 0 3 6 9 12 15
-$ 1 3 6 10 15 21
+$  1 3 6 10 15 21
 $ 10 13 16 21 30 45
 
-Solve ← (
+Parse ← (
   ⊜□≠@\n.
   ≡(⊐(⊜⋕≠@ .))
-  /+≡Next
 )
 
-Solve
+PartOne ← /+≡(Next!!!!+(⊢⇌)+(⊢⇌)) Parse
+PartTwo ← /+≡(Next!!!!(-:)⊢(-:)⊢)Parse
+⊃(PartOne|PartTwo)
