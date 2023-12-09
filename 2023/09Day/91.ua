@@ -18,4 +18,4 @@ Parse ← (
 
 PartOne ← /+≡(Next!!!!+(⊢⇌)+(⊢⇌)) Parse
 PartTwo ← /+≡(Next!!!!(-:)⊢(-:)⊢)Parse
-⊃(PartOne|PartTwo)
+⊃(:"Part 1:"PartOne|:"Part 2:"PartTwo)
